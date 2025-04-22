@@ -3,12 +3,9 @@ import pandas as pd
 import pickle
 import joblib
 
-def load_files():
-  model = joblib.load("best_model.pkl")
-  transformer = joblib.load("transformer.pkl")
-  label_encoders = joblib.load("label_encoders.pkl")
-  return model, transformer, label_encoders
-
+def load_files(filename):
+  file = joblib.load(filename)
+  return file
 
 
 def predict(model, transformer, label_encoders, input_data):
@@ -55,7 +52,14 @@ def main():
       'loan_intent': loan_intent
   }
 
+  model_filename = 'best_model.pkl'
+  label_filename = 'label_encoders.pkl'
+  transformer_filename = 'transformer.pkl'
 
+  model = load_model(model_filename)
+  transformer = load_model(transformer_filename)
+  label_encoders = load_model(label_filename)
+  
   st.write("**Your Input:**")
   st.dataframe(pd.DataFrame([user_input]))
 
