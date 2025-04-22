@@ -56,7 +56,7 @@ def main():
 
 
   st.write("**Your Input:**")
-      st.dataframe(pd.DataFrame([user_input]))
+  st.dataframe(pd.DataFrame([user_input]))
 
   if st.button("Predict Loan Approval"):
         model, transformer, label_encoders = load_files()
