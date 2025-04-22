@@ -3,18 +3,21 @@ import pandas as pd
 import pickle
 import joblib
 
-def load_pickle(filename):
-  load = joblib.load(filename)
-  return load
+def load_files():
+  model = load_pickle("best_model.pkl")
+  transformer = load_pickle("transformer.pkl")
+  label_encoders = load_pickle("label_encoders.pkl")
+  return model, transformer, label_encoders
+
 
 def predict(model, transformer, label_encoders, input_data):
-    data = pd.DataFrame([input_data])
-    for col, encoder in label_encoders.items():
-        data[col] = encoder.transform(data[col].astype(str))
-    X_transformed = transformer.transform(data)
-    y_pred = model.predict(X_transformed)
-    y_pred_proba = model.predict_proba(X_transformed)
-    return y_pred[0], y_pred_proba[0]
+  data = pd.DataFrame([input_data])
+  for col, encoder in label_encoders.items():
+      data[col] = encoder.transform(data[col].astype(str))
+  X_transformed = transformer.transform(data)
+  y_pred = model.predict(X_transformed)
+  y_pred_proba = model.predict_proba(X_transformed)
+  return y_pred[0], y_pred_proba[0]
 
 def main():
   st.title("Loan Approval Prediction")
@@ -26,7 +29,7 @@ def main():
   person_income = st.number_input("Annual Income", min_value = 0, max_value = 6000000, value = 50000, step = 10000)
   person_emp_exp = st.slider("Years of Employment", min_value = 0, max_value = 140, value = 1)
   person_home_ownership = st.selectbox("Home Ownership", ["RENT", "OWN", "MORTGAGE", "OTHER"])
-  loan_amnt = st.number_input("Loan Amount", min_value = 100, max_value = 100000, 5000)
+  loan_amnt = st.number_input("Loan Amount", min_value = 100, max_value = 100000, value = 5000)
   loan_intent = st.selectbox("Loan Intent", ["EDUCATION", "MEDICAL", "VENTURE", "HOMEIMPROVEMENT", "DEBTCONSOLIDATION", "PERSONAL"])
   loan_int_rate = st.number_input("Interest Rate (%)", min_value = 0.0, max_value = 50.0, value = 10.0, step=0.1)
   loan_percent_income = st.number_input("Loan Percent Income",  min_value = 0.0, max_value = 1.0, value =  0.2, step=0.01)
