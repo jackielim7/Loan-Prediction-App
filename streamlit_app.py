@@ -4,10 +4,11 @@ import pickle
 import joblib
 
 def load_files():
-  model = load_pickle("best_model.pkl")
-  transformer = load_pickle("transformer.pkl")
-  label_encoders = load_pickle("label_encoders.pkl")
+  model = joblib.load("best_model.pkl")
+  transformer = joblib.load("transformer.pkl")
+  label_encoders = joblib.load("label_encoders.pkl")
   return model, transformer, label_encoders
+
 
 
 def predict(model, transformer, label_encoders, input_data):
