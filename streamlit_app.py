@@ -19,19 +19,20 @@ def main():
     st.info("This app predicts whether your loan will be approved.")
 
     # Input User
-    person_age = st.slider("Age", 1, 150, 30)
+    person_age = st.slider("Age", min_value = 1, max_value = 150, value = 1)
     person_gender = st.selectbox("Gender", ["male", "female"])
     person_education = st.selectbox("Education Level", ["High School", "Bachelor", "Master", "Associate", "Doctorate"])
-    person_income = st.number_input("Annual Income", 0, 6000000, 50000, step=10000)
-    person_emp_exp = st.slider("Years of Employment", 0, 140, 5)
+    person_income = st.number_input("Annual Income", min_value = 0, max_value = 6000000, value = 50000, step = 10000)
+    person_emp_exp = st.slider("Years of Employment", min_value = 0, max_value = 140, value = 1)
     person_home_ownership = st.selectbox("Home Ownership", ["RENT", "OWN", "MORTGAGE", "OTHER"])
-    loan_amnt = st.number_input("Loan Amount", 100, 100000, 5000, step=1000)
+    loan_amnt = st.number_input("Loan Amount", min_value = 100, max_value = 100000, value = 5000, step = 1000)
     loan_intent = st.selectbox("Loan Intent", ["EDUCATION", "MEDICAL", "VENTURE", "HOMEIMPROVEMENT", "DEBTCONSOLIDATION", "PERSONAL"])
-    loan_int_rate = st.number_input("Interest Rate (%)", 0.0, 50.0, 10.0, step=0.1)
-    loan_percent_income = st.number_input("Loan Percent Income", 0.0, 1.0, 0.2, step=0.01)
-    cb_person_cred_hist_length = st.slider("Credit History Length (years)", 0, 30, 5)
-    credit_score = st.slider("Credit Score", 300, 900, 600)
+    loan_int_rate = st.number_input("Interest Rate (%)", min_value = 0.0, max_value = 50.0, value = 10.0, step=0.1)
+    loan_percent_income = st.number_input("Loan Percent Income",  min_value = 0.0, max_value = 1.0, value =  0.2, step=0.01)
+    cb_person_cred_hist_length = st.slider("Credit History Length (years)", min_value = 0,  max_value = 30, value = 1)
+    credit_score = st.slider("Credit Score", min_value = 300, max_value = 900, value = 600)
     previous_loan_defaults_on_file = st.selectbox("Previous Loan Defaults", ["Yes", "No"])
+
 
     # Simpan input asli user (belum di-encode)
     raw_data = {
