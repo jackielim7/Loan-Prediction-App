@@ -56,15 +56,14 @@ def main():
   label_filename = 'label_encoders.pkl'
   transformer_filename = 'transformer.pkl'
 
-  model = load_model(model_filename)
-  transformer = load_model(transformer_filename)
-  label_encoders = load_model(label_filename)
+  model = load_files(model_filename)
+  transformer = load_files(transformer_filename)
+  label_encoders = load_files(label_filename)
   
   st.write("**Your Input:**")
   st.dataframe(pd.DataFrame([user_input]))
 
   if st.button("Predict Loan Approval"):
-        model, transformer, label_encoders = load_files()
         try:
             pred_class, pred_proba = predict(model, transformer, label_encoders, user_input)
             st.success(f"Prediction: {pred_class}")
