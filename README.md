@@ -3,9 +3,13 @@
 A Streamlit web application that predicts whether a loan application will be approved based on applicant information such as income, credit score, employment experience, and other relevant factors.
 This project was developed as part of my Midterm Exam for the Model Deployment course. The backend model was built using XGBoost, with proper data preprocessing, feature encoding, and model tuning
 
+---
+
 ## Demo App
-You can try the live demo here:
-[Loan Prediction App](https://md-uts.streamlit.app/)
+You can try the live demo here:  
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://md-uts.streamlit.app/)
+
+---
 
 ## Project Overview
 
@@ -21,6 +25,8 @@ The workflow includes:
 4. Hyperparameter Tuning – optimizing model parameters using GridSearchCV.
 5. Model Deployment – deploying the trained model using Streamlit with serialized .pkl files.
 
+---
+
 ## Saved Files
 | File                 | Description                                |
 | -------------------- | ------------------------------------------ |
@@ -28,6 +34,7 @@ The workflow includes:
 | `transformer.pkl`    | Preprocessing pipeline (scalers, encoders) |
 | `label_encoders.pkl` | Encoders for categorical features          |
 
+---
 
 ## Author
 Jackie Lim
