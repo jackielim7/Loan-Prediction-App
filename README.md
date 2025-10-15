@@ -32,5 +32,4 @@ The workflow includes:
 ## Author
 Jackie Lim
 📧 [linkedin.com/in/jackie-lim7/](https://linkedin.com/in/jackie-lim7/)
-
 🎓 Machine Learning Midterm Project — BINUS University  
