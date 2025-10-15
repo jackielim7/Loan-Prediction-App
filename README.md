@@ -2,7 +2,6 @@
 
 A Streamlit web application that predicts whether a loan application will be approved based on applicant information such as income, credit score, employment experience, and other relevant factors.
 This project was developed as part of my Midterm Exam for the Model Deployment course. The backend model was built using XGBoost, with proper data preprocessing, feature encoding, and model tuning
-....
 
 ## Demo App
 You can try the live demo here:
