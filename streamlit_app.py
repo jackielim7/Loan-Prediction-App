@@ -18,7 +18,7 @@ def main():
     st.title("Loan Approval Prediction")
     st.info("This app predicts whether your loan will be approved.")
 
-    # Input User
+    #Input User
     person_age = st.slider("Age", min_value = 1, max_value = 150, value = 1)
     person_gender = st.selectbox("Gender", ["male", "female"])
     person_education = st.selectbox("Education Level", ["High School", "Bachelor", "Master", "Associate", "Doctorate"])
@@ -34,7 +34,7 @@ def main():
     previous_loan_defaults_on_file = st.selectbox("Previous Loan Defaults", ["Yes", "No"])
 
 
-    # Simpan input asli user (belum di-encode)
+    #Save input from user (Not Encoded)
     raw_data = {
         'person_age': person_age,
         'person_income': person_income,
@@ -51,7 +51,7 @@ def main():
         'loan_intent': loan_intent
     }
 
-    # Tampilkan data input dari user
+    #Show Inputed Data
     st.write("### Your Input")
     st.dataframe(pd.DataFrame([raw_data]))
 
@@ -62,10 +62,10 @@ def main():
             label_encoders = load_model("label_encoders.pkl")
             pred_class, pred_proba, class_labels = predict_with_model(model, transformer, label_encoders, raw_data)
 
-            # Tampilkan prediksi
+            #Show Prediction
             st.success(f"Prediction: `{pred_class}`")
 
-            # Tampilkan probabilitas untuk masing-masing kelas
+            #Show All Clasess Probability
             proba_df = pd.DataFrame([pred_proba], columns=class_labels).round(4)
             st.write("### Class Probabilities")
             st.dataframe(proba_df)
